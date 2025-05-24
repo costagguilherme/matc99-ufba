@@ -7,4 +7,4 @@ Testar via interface
 
 Testar via terminal
 1. curl localhost:8080
-2. curl -X POST -d "username=joao&password=123456" http://localhost:8080/log
+2. curl -X POST -d "cpf=09808706532&password=123456" http://localhost:8080/login
