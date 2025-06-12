@@ -1,10 +1,7 @@
-1. Installar o flask: pip install flask
-2. Rodar o servidor: python server.py
-
-Testar via interface
-1. Acessar localhost:8080
-2. Preencher usuário e senha
-
-Testar via terminal
-1. curl localhost:8080
-2. curl -X POST -d "cpf=09808706532&password=123456" http://localhost:8080/login
+1. atacante_h2.py: Colocar no outside 2
+2. vitima_h1.py: Colocar no outside 1
+3. erro.php, homepage.php e save_user.php: Colocar em /var/www/html/secflood no terminal do secflood
+4. Em /var/www/html/secflood criar o arquivo credentials.txt (com o nano) e depois rodar "chmod 777 credentials.txt" para dar permissão de escrita
+5. python3 vitima_h1.py
+6. python3 atacante_h2.py
+7. Acessar https://200.17.58.102:31092/homepage.
