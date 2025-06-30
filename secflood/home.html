@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serasa Limpa Nome</title>
+    <style>
+      /* Sticky Footer Setup */
+      html,
+      body {
+        height: 100%;
+        /* Important for sticky footer */
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #ffeeef;
+        color: #1b1c3a;
+        display: flex;
+        /* Flexbox for layout */
+        flex-direction: column;
+        /* Arrange items vertically */
+      }
+
+      #content-wrap {
+        flex-grow: 1;
+        /* This pushes the footer down */
+        display: flex;
+        flex-direction: column;
+        /* To manage internal mains */
+      }
+
+      header {
+        background-color: #ec0077;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        flex-shrink: 0;
+        /* Prevent header from shrinking */
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .logo img {
+        margin-right: 8px;
+      }
+
+      .menu-items {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .menu-items div {
+        cursor: pointer;
+        padding: 0.5rem 0;
+      }
+
+      .main {
+        display: none;
+        padding: 3rem 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        width: 100%;
+        /* Ensure it takes full width of its parent */
+        box-sizing: border-box;
+        /* Include padding in width */
+        flex-shrink: 0;
+        /* Prevent main sections from shrinking */
+      }
+
+      .main.active {
+        display: block;
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+        padding-bottom: 3rem;
+      }
+
+      .hero-text {
+        flex: 1 1 50%;
+      }
+
+      .hero-image {
+        flex: 1 1 40%;
+        text-align: right;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .highlight {
+        color: #ec0077;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+
+      .description {
+        font-size: 1.1rem;
+        margin: 1rem 0;
+        max-width: 500px;
+      }
+
+      .button {
+        background-color: #ec0077;
+        color: white;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      form {
+        max-width: 400px;
+        margin-top: 2rem;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      input {
+        width: calc(100% - 16px);
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .section-title {
+        text-align: center;
+        color: #ec0077;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+
+      /* New sections for extended home */
+      .info-section {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2.5rem;
+        text-align: center;
+        /* Applied to info-section */
+      }
+
+      .info-section h2 {
+        color: #ec0077;
+        margin-top: 0;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .info-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+      }
+
+      .card {
+        flex: 1 1 calc(33% - 1.5rem);
+        /* 3 cards per row */
+        min-width: 280px;
+        padding: 1.5rem;
+        background-color: #ffeeef;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .card h3 {
+        color: #1b1c3a;
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+
+      .call-to-action-company {
+        background-color: #1b1c3a;
+        color: white;
+        padding: 3rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+      .call-to-action-company h2 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* How it Works and FAQs sections (existing styles) */
+      .how-it-works-steps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        margin-bottom: 3rem;
+      }
+
+      .step {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        flex: 1 1 calc(33% - 2rem);
+        min-width: 280px;
+        text-align: center;
+      }
+
+      .step h3 {
+        color: #ec0077;
+        margin-top: 0;
+        font-size: 1.3rem;
+      }
+
+      .faq-item {
+        background-color: white;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .faq-question {
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        color: #1b1c3a;
+      }
+
+      .faq-answer {
+        padding: 0 1.5rem 1rem;
+        color: #555;
+        display: none;
+      }
+
+      .faq-question::after {
+        content: '+';
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.open .faq-question::after {
+        content: '-';
+        transform: rotate(180deg);
+      }
+
+      .faq-item.open .faq-answer {
+        display: block;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1b1c3a;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        margin-top: auto;
+      }
+
+      footer .footer-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      footer .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Media Queries for Responsiveness */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          padding: 1rem;
+        }
+
+        .menu-items {
+          margin-top: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.8rem;
+        }
+
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-image {
+          text-align: center;
+          margin-top: 2rem;
+        }
+
+        .hero-text {
+          flex: 1 1 100%;
+        }
+
+        .main {
+          padding: 2rem 1rem;
+        }
+
+        .how-it-works-steps,
+        .info-cards {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .step,
+        .card {
+          flex: 1 1 90%;
+        }
+
+        form {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    </style>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+
+    <header>
+      <div class="logo">
+        <img src="https://www.serasa.com.br/favicon.ico" width="24" height="24" alt="Serasa Logo">
+        serasa limpa nome
+      </div>
+      <nav class="menu-items">
+        <div onclick="showSection('home')">Início</div>
+        <div onclick="showSection('how-it-works')">Como Funciona</div>
+        <div onclick="showSection('faq')">FAQ</div>
+        <div onclick="window.location.href='login.html'">👤 Entrar</div>
+
+      </nav>
+    </header>
+
+    <div id="content-wrap">
+      <main id="home" class="main active">
+        <div class="hero">
+          <div class="hero-text">
+            <h1>Serasa Limpa Nome:<br>
+              <span class="highlight">Negocie dívidas com até 90% de desconto</span>
+            </h1>
+            <p class="description">
+              Encontre ofertas de forma rápida e segura, com opções de parcelamento que facilitam a negociação das suas dívidas e ajudam a limpar o seu nome.
+            </p>
+            <button class="button" onclick="showSection('consult')">Consultar CPF grátis</button>
+          </div>
+          <div class="hero-image">
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb212bb18f00a40869a6cd42f77cbeefc%2F9a4980a830614715b0daf89a874a953a?format=webp&amp;width=1408" alt="Mulher segurando celular">
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h2>Por que negociar suas dívidas com a Serasa?</h2>
+          <div class="info-cards">
+            <div class="card">
+              <h3>Descontos Imperdíveis</h3>
+              <p>Milhares de ofertas com até 90% de desconto para você pagar menos e quitar suas dívidas.</p>
+            </div>
+            <div class="card">
+              <h3>Totalmente Online e Seguro</h3>
+              <p>Negocie sem sair de casa, com a segurança e a credibilidade da Serasa.</p>
+            </div>
+            <div class="card">
+              <h3>Opções de Parcelamento</h3>
+              <p>Encontre condições de pagamento que se encaixam no seu orçamento, facilitando sua vida.</p>
+            </div>
+            <div class="card">
+              <h3>Limpe seu Nome Rápido</h3>
+              <p>Após o pagamento, seu nome fica limpo e seu score de crédito pode melhorar em pouco tempo.</p>
+            </div>
+            <div class="card">
+              <h3>Atendimento Humanizado</h3>
+              <p>Conte com suporte para tirar suas dúvidas e guiar você no processo de negociação.</p>
+            </div>
+            <div class="card">
+              <h3>Diversas Empresas Parceiras</h3>
+              <p>Negocie dívidas com bancos, financeiras, varejistas, operadoras de telefone e muito mais.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h2>Sua jornada para o nome limpo começa aqui!</h2>
+          <h3>Milhões de brasileiros já limparam o nome com a Serasa. Não perca tempo, consulte seu CPF agora mesmo e descubra as melhores ofertas para você!</h3>
+          <button class="button" onclick="showSection('consult')">Consultar CPF grátis e negociar</button>
+        </div>
+
+        <div class="call-to-action-company">
+          <h2>É uma empresa e quer negociar suas dívidas?</h2>
+          <p>Se você é uma empresa e deseja oferecer condições especiais para seus clientes quitarem suas dívidas, a Serasa pode te ajudar a alcançar milhões de consumidores.</p>
+          <button class="button" style="background-color: white; color: #ec0077;">Seja um parceiro</button>
+        </div>
+      </main>
+
+      <main id="consult" class="main">
+        <h2>Consulta de CPF</h2>
+        <form>
+          <input type="text" placeholder="Digite seu CPF" required="">
+          <input type="date" placeholder="Data de nascimento" required="">
+          <button class="button" type="submit">Consultar</button>
+        </form>
+        <br>
+        <button class="button" onclick="showSection('home')">← Voltar</button>
+      </main>
+
+      <main id="how-it-works" class="main">
+        <h2 class="section-title">Como Funciona o Serasa Limpa Nome</h2>
+        <div class="how-it-works-steps">
+          <div class="step">
+            <h3>1. Consulte seu CPF</h3>
+            <p>Descubra suas dívidas de forma rápida e gratuita, sem complicação.</p>
+          </div>
+          <div class="step">
+            <h3>2. Encontre as melhores ofertas</h3>
+            <p>Negocie com descontos de até 90% e escolha as condições de pagamento que cabem no seu bolso.</p>
+          </div>
+          <div class="step">
+            <h3>3. Pague e limpe seu nome</h3>
+            <p>Realize o pagamento e veja seu nome ficar limpo novamente, melhorando seu score de crédito.</p>
+          </div>
+        </div>
+        <button class="button" onclick="showSection('home')">← Voltar</button>
+      </main>
+
+      <main id="faq" class="main">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">O que é o Serasa Limpa Nome?</div>
+            <div class="faq-answer">É uma plataforma online da Serasa que permite a negociação de dívidas com empresas parceiras, oferecendo descontos e condições especiais de pagamento.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Consultar meu CPF afeta meu score?</div>
+            <div class="faq-answer">Não, a consulta do seu CPF para verificar dívidas no Serasa Limpa Nome não afeta sua pontuação de crédito.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Quais tipos de dívidas posso negociar?</div>
+            <div class="faq-answer">Você pode negociar dívidas com bancos, financeiras, empresas de telecomunicações, varejistas, entre outros parceiros do Serasa Limpa Nome.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">É seguro usar o Serasa Limpa Nome?</div>
+            <div class="faq-answer">Sim, o Serasa é uma empresa com mais de 50 anos de história no mercado brasileiro e utiliza tecnologias de segurança para proteger seus dados.</div>
+          </div>
+        </div>
+        <br>
+        <button class="button" onclick="showSection('home')">← Voltar</button>
+      </main>
+    </div>
+
+    <footer>
+      <p>© 2025 Serasa Experian. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#privacy">Política de Privacidade</a>
+        <a href="#terms">Termos de Uso</a>
+        <a href="#contact">Fale Conosco</a>
+      </div>
+    </footer>
+
+    <script>
+      function showSection(id) {
+        document.querySelectorAll('.main').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        // Scroll to top of the new section for better UX
+        document.getElementById(id).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+
+      document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', event => {
+          const faqItem = event.target.closest('.faq-item');
+          faqItem.classList.toggle('open');
+        });
+      });
+    </script>
+
+
+  </body>
+
+</html>
