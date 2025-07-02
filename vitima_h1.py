@@ -13,7 +13,7 @@ conn, addr = tcp.accept()
 
 data = conn.recv(1024)
 if data:
-    print(f"[Serasa]: {data.decode()}")
+    print(f"[BrazilianBank]: {data.decode()}")
     with open("chat.txt", "a") as f:
         f.write(f"{data.decode()}\n")
 

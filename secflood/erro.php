@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Erro - Serasa</title>
+  <title>Erro - BrazilianBank</title>
   <style>
     html, body {
       margin: 0;
@@ -18,7 +18,7 @@
     }
 
     header {
-      background-color: #ec0077;
+      background-color: #184f93;
       color: white;
       padding: 1rem 2rem;
       display: flex;
@@ -52,7 +52,7 @@
     .error-code {
       font-size: 4rem;
       font-weight: bold;
-      color: #ec0077;
+      color: #184f93;
     }
 
     .error-message {
@@ -66,7 +66,7 @@
     }
 
     .button {
-      background-color: #ec0077;
+      background-color: #184f93;
       color: white;
       padding: 0.8rem 2rem;
       border: none;
@@ -113,7 +113,7 @@
 
 <body>
   <header>
-    <div class="logo">Serasa</div>
+    <div class="logo">BrazilianBank</div>
   </header>
 
   <div class="error-container">
@@ -128,11 +128,7 @@
   </div>
 
   <footer>
-    <p>© 2025 Serasa Experian. Todos os direitos reservados.</p>
-    <div class="footer-links">
-      <a href="https://www.serasa.com.br/app/politica-de-privacidade/">Política de Privacidade</a>
-      <a href="https://www.serasa.com.br/app/politica-de-privacidade/">Termos de Uso</a>
-    </div>
+    <p>© 2025 BrazilianBank Experian. Todos os direitos reservados.</p>
   </footer>
 </body>
 
